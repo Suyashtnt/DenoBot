@@ -1,7 +1,7 @@
 # Deno Bot
-A boilerplate Deno Discord Bot built with Dinocord.
+A boilerplate Deno Discord Bot built with Discordeno.
 
 This is still under WIP. Check back later, i'll be beginning commits from tomorrow!
-Eventually, when Dinocord is progressed and is more stable, this may become an actual Discord Bot lol.
+Eventually, when Discordeno is progressed and is more stable, this may become an actual Discord Bot lol.
 
 
