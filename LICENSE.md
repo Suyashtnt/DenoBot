@@ -5,7 +5,7 @@
 
 <b>Copyright &copy; 2020 <a href="https://dev.ntmnathan.com/">NTM Development</a> - All Rights reserved.</b>
 
- * This is a open source project by NTM Development.
+ * This is an open source project by NTM Development.
  * You may distribute, fork at your own choice.
  * The software is Bound by the MIT License.
  * Written by NTM Nathan#0001 <ntmnathantominecraft@gmail.com>, May 2020
