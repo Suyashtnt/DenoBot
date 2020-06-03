@@ -1,3 +1,6 @@
+# Currently Outdated!
+I am currently busy with other projects such as Nate Bot and building the docs for Discordeno. If you like to find a working example, please use https://github.com/Skillz4Killz/Discordeno-bot-template and not this repository. I will update this when I have the time -NTMNathan
+
 <img src="https://i.imgur.com/55pQ2yu.png" width="500" height="auto">
 
 <h1>DenoBot</h1>
