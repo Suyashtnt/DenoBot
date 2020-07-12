@@ -1,19 +1,20 @@
-import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/message.ts";
+import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/message.ts";
 import { botCache } from "../../mod.ts";
+import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/handlers/channel.ts";
 import Embed from '../utils/embedConstructor.ts';
-import ky from 'https://unpkg.com/ky/index.js';
+import ky from 'https://unpkg.com/ky@0.20.0/index.js';
 
 const dog = async (message: Message, args: String[]) => {
 
-    const body = await ky.get('https://nekos.life/api/v2/img/woof').json();
+  const body = await ky.get('https://nekos.life/api/v2/img/woof').json();
 
-      const output = new Embed()
-          .setTitle(`**Dog** 🐶`)
-          .setImage(body.url)
-          .setColor('#5da4fc')
+  const output = new Embed()
+    .setTitle(`**Dog** 🐶`)
+    .setImage(body.url)
+    .setColor('#5da4fc')
 
-      message.channel.sendMessage({ embed: output });
-  }
+  sendMessage(message.channel, { embed: output });
+}
 
 botCache.commands.set(`dog`, {
   callback: dog,

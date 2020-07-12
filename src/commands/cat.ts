@@ -1,19 +1,20 @@
-import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/message.ts";
+import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/message.ts";
+import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 import { botCache } from "../../mod.ts";
 import Embed from '../utils/embedConstructor.ts';
-import ky from 'https://unpkg.com/ky/index.js';
+import ky from 'https://unpkg.com/ky@0.20.0/index.js';
 
 const cat = async (message: Message, args: String[]) => {
 
-    const body = await ky.get('https://aws.random.cat/meow').json();
+  const body = await ky.get('https://aws.random.cat/meow').json();
 
-      const output = new Embed()
-          .setTitle(`**Cat** 😸`)
-          .setImage(body.file)
-          .setColor('#6df7ff')
+  const output = new Embed()
+    .setTitle(`**Cat** 😸`)
+    .setImage(body.file)
+    .setColor('#6df7ff')
 
-      message.channel.sendMessage({ embed: output });
-  }
+  sendMessage(message.channel, { embed: output });
+}
 botCache.commands.set(`cat`, {
   callback: cat,
 });

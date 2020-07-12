@@ -1,6 +1,8 @@
-import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/message.ts";
-import { Guild } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/guild.ts";
-import { botCache, botprefix } from "../../mod.ts";
+import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/message.ts";
+import { Guild } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/guild.ts";
+import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
+import { botCache } from "../../mod.ts";
+import { configs } from "../../configs.ts";
 import Embed from '../utils/embedConstructor.ts';
 
 const help = (message: Message, args: string[], guild?: Guild) => {
@@ -23,9 +25,9 @@ const help = (message: Message, args: string[], guild?: Guild) => {
     \`shutdown\`
     `)
     .setColor('#848484')
-    .setFooter(`Prefix: ${botprefix.prefix || `Huh? No Prefix How Tho???`}`, `.`)
+    .setFooter(`Prefix: ${configs.prefix || `Huh? No Prefix How Tho???`}`, `.`)
 
-message.channel.sendMessage({ embed: userEmbed });
+  sendMessage(message.channel, { embed: userEmbed });
 };
 
 botCache.commands.set(`help`, {

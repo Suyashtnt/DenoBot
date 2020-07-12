@@ -1,22 +1,24 @@
-import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/message.ts";
 import { botCache } from "../../mod.ts";
-import Embed from '../utils/embedConstructor.ts';
-
-const avatar = async (message: Message) => {
-
-    const user = message.mentions.length ? message.mentions[0] : message.author
-
-      const output = new Embed()
-          .setTitle(`**${user.tag}'s Avatar**`)
-          .setDescription(`
-          **ID:** ${user.id}
-          `)
-          .setImage(user.avatarURL(2048))
-          .setColor('#7289da')
-
-      message.channel.sendMessage({ embed: output });
-  }
+import { avatarURL } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/handlers/member.ts";
+import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 
 botCache.commands.set(`avatar`, {
-  callback: avatar,
+  guildOnly: true,
+  callback: (message, _args, guild) => {
+    const member = message.mentions.length
+      ? message.mentions()[0]
+      : message.member()!;
+
+    return sendMessage(message.channel, {
+      embed: {
+        author: {
+          name: member.tag,
+          icon_url: avatarURL(member),
+        },
+        image: {
+          url: avatarURL(member, 2048),
+        },
+      },
+    });
+  },
 });

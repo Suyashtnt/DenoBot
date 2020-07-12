@@ -1,12 +1,12 @@
-import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/message.ts";
+import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/message.ts";
 import { botCache } from "../../mod.ts";
-
+import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 const shutdown = async (message: Message, args: String[]) => {
 
-    if(message.author.id !== "341527559382499329") return message.channel.sendMessage('You do not have permissions to run this command!');
+  if (message.author.id !== "341527559382499329") return sendMessage(message.channel, 'You do not have permissions to run this command!');
 
-    await message.channel.sendMessage('Bot is now shutting down...');
-    Deno.exit();
+  await sendMessage(message.channel, 'Bot is now shutting down...');
+  Deno.exit();
 }
 
 botCache.commands.set(`shutdown`, {

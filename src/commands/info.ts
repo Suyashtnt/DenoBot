@@ -1,27 +1,27 @@
-import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/message.ts";
-import { Guild } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/structures/guild.ts";
+import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/message.ts";
+import { Guild } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/guild.ts";
 import { botCache } from "../../mod.ts";
-import { cache } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v1/utils/cache.ts";
+import { cache } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/utils/cache.ts";
 import Embed from '../utils/embedConstructor.ts';
 import { moment } from "https://deno.land/x/moment/moment.ts";
-
+import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 
 const userinfo = (message: Message, args: string[], guild?: Guild) => {
 
   const userEmbed = new Embed()
     .setTitle(`**${message.author.username}'s Info**`)
-    .setThumbnail(`${message.author.avatarURL(2048)}`)
+    .setThumbnail(`${message.author.avatar}`)
     .setDescription(`
     **ID: \`${message.author.id}\`**
     **Discrim:** #${message.author.discriminator}
-    **Guild Nickname:** ${message.member?.nick || `None`}
+    **Guild Nickname:** ${message.member || `None`}
     **Joined Server:** ${moment(message.member?.joined_at).format("LLLL")}
     **Avatar URL:** [Click](${message.author.avatarURL(2048)})
     **Started Boosting:** ${moment(message.member?.premiumSince).format("LLLL") || `Not Bought yet :(`}
     `)
     .setColor('#848484')
 
-message.channel.sendMessage({ embed: userEmbed });
+  sendMessage(message.channel, { embed: userEmbed });
 };
 
 
@@ -44,7 +44,7 @@ const serverinfo = (message: Message, args: string[], guild?: Guild) => {
     `)
     .setColor('#848484')
 
-message.channel.sendMessage({ embed: serverEmbed });
+  sendMessage(message.channel, { embed: serverEmbed });
 };
 
 const stats = (message: Message) => {
@@ -59,7 +59,7 @@ const stats = (message: Message) => {
     `)
     .setColor('#848484')
 
-message.channel.sendMessage({ embed: embed });
+  sendMessage(message.channel, { embed: embed });
 
 };
 
