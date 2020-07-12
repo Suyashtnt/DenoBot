@@ -1,4 +1,4 @@
-import { Embed_Image, Embed_Thumbnail, Embed_Author, Embed_Field, Embed_Footer, Embed } from 'https://raw.githubusercontent.com/Skillz4Killz/Discordeno/master/types/message.ts';
+import { Embed_Image, Embed_Thumbnail, Embed_Author, Embed_Field, Embed_Footer, Embed } from 'https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/types/message.ts';
 
 class MessageEmbed {
     image?: Embed_Image;

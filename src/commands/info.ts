@@ -4,16 +4,22 @@ import { botCache } from "../../mod.ts";
 import { cache } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/utils/cache.ts";
 import Embed from '../utils/embedConstructor.ts';
 import { moment } from "https://deno.land/x/moment/moment.ts";
-import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
+import { avatarURL, guildIconURL, sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
+
 
 const userinfo = (message: Message, args: string[], guild?: Guild) => {
-
+  const member = message.member()
+  if (!member) return
   const userEmbed = new Embed()
     .setTitle(`**${message.author.username}'s Info**`)
-    .setThumbnail(`${message.author.avatar}`)
+    .setThumbnail(`${avatarURL(member, 2048)}`)
     .setDescription(`
     **ID: \`${message.author.id}\`**
     **Discrim:** #${message.author.discriminator}
+    **Guild Nickname:** ${member?.nick || `None`}
+    **Joined Server:** ${moment(member?.joinedAt).format("LLLL")}
+    **Avatar URL:** [Click](${avatarURL(member, 2048)})
+    **Started Boosting:** ${moment(member?.premiumSince).format("LLLL") || `Not Bought yet :(`}
     `)
     .setColor('#848484')
 
@@ -23,19 +29,17 @@ const userinfo = (message: Message, args: string[], guild?: Guild) => {
 
 const serverinfo = (message: Message, args: string[], guild?: Guild) => {
 
-  // @ts-ignore
+  if (!guild) return
   const serverEmbed = new Embed()
     .setTitle(`**${guild?.name} Stats**`)
-    .setThumbnail(`${guild?.icon}`)
+    .setThumbnail(`${guildIconURL(guild, 2048)}`)
     .setDescription(`
     **ID: \`${guild?.id}\`**
     **Owner: \`${guild?.ownerID}\`**
-
     **Members:** ${guild?.members.size}
     **Total Members:** ${guild?.memberCount}
     **Channels:** ${guild?.channels.size}
     **Roles:** ${guild?.roles.size}
-
     **Region: \`${guild?.region}\`**
     **Large Server?: \`${guild?.large}\`**
     `)
@@ -49,7 +53,6 @@ const stats = (message: Message) => {
   const embed = new Embed()
     .setAuthor(`Bot Stats`, `https://i.imgur.com/q2jd68R.png`)
     .setDescription(`
-    **Users:** cannot get users
     **Servers:** ${cache.guilds.size}
     **Channels:** ${cache.channels.size}
     **Messages Sent:** ${cache.messages.size}
