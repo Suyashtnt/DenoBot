@@ -25,7 +25,7 @@ const importDirectory = async (path: string) => {
       continue;
     }
 
-    importDirectory(currentPath);
+    await importDirectory(currentPath);
   }
 };
 

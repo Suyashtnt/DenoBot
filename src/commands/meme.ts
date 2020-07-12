@@ -1,10 +1,11 @@
 import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/message.ts";
 import { botCache } from "../../mod.ts";
 import Embed from '../utils/embedConstructor.ts';
-importky from 'https://unpkg.com/ky@0.20.0/index.js';
+import ky from 'https://cdn.pika.dev/ky@^0.20.0';
 import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 const meme = async (message: Message, args: String[]) => {
 
+  // @ts-ignore
   const body = await ky.get('https://some-random-api.ml/meme').json();
 
   const output = new Embed()

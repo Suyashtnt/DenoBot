@@ -14,10 +14,6 @@ const userinfo = (message: Message, args: string[], guild?: Guild) => {
     .setDescription(`
     **ID: \`${message.author.id}\`**
     **Discrim:** #${message.author.discriminator}
-    **Guild Nickname:** ${message.member || `None`}
-    **Joined Server:** ${moment(message.member?.joined_at).format("LLLL")}
-    **Avatar URL:** [Click](${message.author.avatarURL(2048)})
-    **Started Boosting:** ${moment(message.member?.premiumSince).format("LLLL") || `Not Bought yet :(`}
     `)
     .setColor('#848484')
 
@@ -27,12 +23,13 @@ const userinfo = (message: Message, args: string[], guild?: Guild) => {
 
 const serverinfo = (message: Message, args: string[], guild?: Guild) => {
 
+  // @ts-ignore
   const serverEmbed = new Embed()
     .setTitle(`**${guild?.name} Stats**`)
-    .setThumbnail(`${guild?.iconURL(2048)}`)
+    .setThumbnail(`${guild?.icon}`)
     .setDescription(`
     **ID: \`${guild?.id}\`**
-    **Owner: \`${guild?.owner_id}\`**
+    **Owner: \`${guild?.ownerID}\`**
 
     **Members:** ${guild?.members.size}
     **Total Members:** ${guild?.memberCount}
@@ -52,7 +49,7 @@ const stats = (message: Message) => {
   const embed = new Embed()
     .setAuthor(`Bot Stats`, `https://i.imgur.com/q2jd68R.png`)
     .setDescription(`
-    **Users:** ${cache.users.size}
+    **Users:** cannot get users
     **Servers:** ${cache.guilds.size}
     **Channels:** ${cache.channels.size}
     **Messages Sent:** ${cache.messages.size}

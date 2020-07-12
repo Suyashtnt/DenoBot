@@ -1,13 +1,14 @@
 import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/structures/message.ts";
 import { botCache } from "../../mod.ts";
 import Embed from '../utils/embedConstructor.ts';
-importky from 'https://unpkg.com/ky@0.20.0/index.js';
+import ky from 'https://cdn.pika.dev/ky@^0.20.0';
 import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 const pokedex = async (message: Message, args: String[]) => {
 
   let name = args.join(" ");
   if (!name) return sendMessage(message.channel, `You'll need to specify a Pokemon to Search for!`)
 
+  // @ts-ignore
   const pokedex = await ky.get(`https://some-random-api.ml/pokedex?pokemon=${name}`).json();
 
   const embed = new Embed()

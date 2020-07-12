@@ -2,10 +2,11 @@ import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discorde
 import { botCache } from "../../mod.ts";
 import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/handlers/channel.ts";
 import Embed from '../utils/embedConstructor.ts';
-import ky from 'https://unpkg.com/ky@0.20.0/index.js';
+import ky from 'https://cdn.pika.dev/ky@^0.20.0';
 
 const dog = async (message: Message, args: String[]) => {
 
+  // @ts-ignore
   const body = await ky.get('https://nekos.life/api/v2/img/woof').json();
 
   const output = new Embed()

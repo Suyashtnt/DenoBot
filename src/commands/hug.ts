@@ -2,7 +2,7 @@ import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discorde
 import { botCache } from "../../mod.ts";
 import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 import Embed from '../utils/embedConstructor.ts';
-import ky from 'https://unpkg.com/ky@0.20.0/index.js';
+import ky from 'https://cdn.pika.dev/ky@^0.20.0';
 
 const hug = async (message: Message) => {
 
@@ -12,6 +12,7 @@ const hug = async (message: Message) => {
   const user = message.mentions.length ? message.mentions[0] : message.author
   if (user === message.author) return sendMessage(message.channel, `You want to hug yourself?!?! Please Mention a user to hug!`)
 
+  // @ts-ignore
   const body = await ky.get('https://nekos.life/api/v2/img/hug').json();
 
   const output = new Embed()

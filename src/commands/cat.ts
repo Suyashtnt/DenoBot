@@ -6,7 +6,7 @@ import ky from 'https://unpkg.com/ky@0.20.0/index.js';
 
 const cat = async (message: Message, args: String[]) => {
 
-  const body = await ky.get('https://aws.random.cat/meow').json();
+  const body = await ky.create('https://aws.random.cat/meow').json();
 
   const output = new Embed()
     .setTitle(`**Cat** 😸`)
