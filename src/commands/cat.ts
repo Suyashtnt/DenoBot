@@ -2,11 +2,12 @@ import { Message } from "https://raw.githubusercontent.com/Skillz4Killz/Discorde
 import { sendMessage } from "https://raw.githubusercontent.com/Skillz4Killz/Discordeno/v5/mod.ts";
 import { botCache } from "../../mod.ts";
 import Embed from '../utils/embedConstructor.ts';
-import ky from 'https://unpkg.com/ky@0.20.0/index.js';
+// @deno-types=https://deno.land/x/ky/index.d.ts
+import ky from 'https://unpkg.com/ky@0.21.0/index.js';
 
 const cat = async (message: Message, args: String[]) => {
 
-  const body = await ky.create('https://aws.random.cat/meow').json();
+  const body = await ky.get('https://aws.random.cat/meow').json();
 
   const output = new Embed()
     .setTitle(`**Cat** 😸`)
